@@ -1,0 +1,105 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+class Student {
+    private String name;
+    private int rollNumber;
+    private int age;
+    private String course;
+    public Student(String name, int rollNumber, int age, String course) {
+        this.name = name;
+        this.rollNumber = rollNumber;
+        this.age = age;
+        this.course = course;
+    }
+    public String getName() {
+        return name;
+    }
+ public int getRollNumber() {
+        return rollNumber;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getCourse() {
+        return course;
+    }
+    public void displayStudentInfo() {
+        System.out.println("Name: " + name);
+        System.out.println("Roll Number: " + rollNumber);
+        System.out.println("Age: " + age);
+        System.out.println("Course: " + course);
+    }
+}
+class StudentManagementSystem {
+    private ArrayList<Student> studentList;
+    public StudentManagementSystem() {
+        studentList = new ArrayList<>();
+    }
+    public void addStudent(String name, int rollNumber, int age, String course) {
+        Student student = new Student(name, rollNumber, age, course);
+        studentList.add(student);
+    }
+    public void displayAllStudents() {
+        if (studentList.isEmpty()) {
+            System.out.println("No students available.");
+        } else {
+            for (Student student : studentList) {
+                student.displayStudentInfo();
+                System.out.println("------");
+}
+}
+}
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        StudentManagementSystem sms = new StudentManagementSystem();
+        while (true) {
+            System.out.println("Student Management System");
+            System.out.println("1. Add Student");
+            System.out.println("2. View All Students");
+            System.out.println("3. Exit");
+            System.out.print("Enter your choice: ");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine();  
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter student name: ");
+                    String name = scanner.nextLine();
+
+                    System.out.print("Enter student roll number: ");
+                    int rollNumber = scanner.nextInt();
+
+                    System.out.print("Enter student age: ");
+                    int age = scanner.nextInt();
+                    scanner.nextLine(); 
+
+                    System.out.print("Enter student course: ");
+                    String course = scanner.nextLine();
+
+                    sms.addStudent(name, rollNumber, age, course);
+                    System.out.println("Student added successfully!");
+                    break;
+
+                case 2:
+                    sms.displayAllStudents();
+                    break;
+
+                case 3:
+                   
+                    System.out.println("Exiting the program.");
+                    scanner.close();
+                    return;
+
+                default:
+                    System.out.println("Invalid choice, please try again.");
+}
+}
+}
+}
+    
+
